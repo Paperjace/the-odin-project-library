@@ -1,0 +1,24 @@
+:root {
+  --lemon: #ecd078;
+  --clementine: #d95b43;
+  --ruby: #c02942;
+  --dark-cherry: #542437;
+  --pine-green: #53777a;
+}
+
+body {
+  background-color: var(--pine-green);
+  color: beige;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+}
+
+.book {
+  background-color: var(--lemon);
+  padding: 10px;
+  margin: 5px;
+  color: var(--dark-cherry);
+  font-size: 1.5rem;
+  max-width: 300px;
+}
