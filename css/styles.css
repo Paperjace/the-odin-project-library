@@ -14,11 +14,58 @@ body {
   font-size: 16px;
 }
 
+#app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .book {
-  background-color: var(--lemon);
-  padding: 10px;
+  background-color: var(--dark-cherry);
+  padding: 1.65rem;
   margin: 5px;
-  color: var(--dark-cherry);
+  color: var(--lemon);
   font-size: 1.5rem;
   max-width: 300px;
+  border-radius: 1rem;
+}
+
+.book-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.book-title {
+  font-size: 2rem;
+  color: var(--lemon);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.book-author::before {
+  content: 'by ';
+  color: var(--pine-green);
+}
+
+.book-author {
+  color: var(--pine-green);
+}
+
+.book-pages::after {
+  content: ' pages ';
+  color: var(--pine-green);
+}
+
+.book-pages {
+  color: var(--pine-green);
+}
+
+.book-Read {
+  color: var(--pine-green);
+}
+
+.book-Unread {
+  color: var(--ruby);
 }

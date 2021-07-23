@@ -4,7 +4,7 @@ let myLibrary = [
     author: 'J.R.R. Tolkien',
     title: 'The Hobbit',
     pages: 420,
-    hasBeenRead: true,
+    hasBeenRead: false,
   },
   {
     id: 2,
@@ -25,17 +25,46 @@ function Book(bookDetails) {
 
 function addBookToLibrary() {}
 
-function createDisplayBookElement(book) {
-  const app = document.getElementById('app');
+function createBookElement(book) {
   const bookElement = document.createElement('div');
   bookElement.className = 'book';
   bookElement.id = book.id;
-  bookElement.innerText = `Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}`;
-  app.appendChild(bookElement);
+
+  const ul = document.createElement('ul');
+  ul.setAttribute('id', `book-details-${book.id}`);
+  ul.setAttribute('class', 'book-ul');
+
+  bookElement.appendChild(ul);
+  return bookElement;
+}
+
+function createDetailListInBookElement(ul, bookDetail, className) {
+  const li = document.createElement('li');
+  li.setAttribute('class', className);
+  li.appendChild(document.createTextNode(bookDetail));
+  ul.appendChild(li);
+}
+
+function addBookDetailsToBookElement(book) {
+  const readOrUnread = book.hasBeenRead ? 'Read' : 'Unread';
+
+  const ul = document.getElementById(`book-details-${book.id}`);
+
+  createDetailListInBookElement(ul, book.title, 'book-title');
+  createDetailListInBookElement(ul, book.author, 'book-author');
+  createDetailListInBookElement(ul, book.pages, 'book-pages');
+  createDetailListInBookElement(ul, readOrUnread, `book-${readOrUnread}`);
 }
 
 function displayBooks() {
+  const app = document.getElementById('app');
+  app.innerText = '';
   myLibrary.forEach((book) => {
-    createDisplayBookElement(book);
+    app.appendChild(createBookElement(book));
+    addBookDetailsToBookElement(book);
   });
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  displayBooks();
+});
